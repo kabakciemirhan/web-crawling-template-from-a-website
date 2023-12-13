@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bir Sayfadaki Ürünleri Çekmek</title>
+    <style>
+        table
+        {
+            width: 100%;
+        }
+    </style>
+</head>
+<body style="margin: auto; text-align: center;">
+    <h1 style="border: 3px solid red;">Bir Sayfadaki Ürünleri Çekmek</h1>
+    <h6>© Emirhan Kabakcı</h6>
+
+    <form method="post">
+        <label for="site_url">Site URL:</label>
+        <input type="text" name="site_url" value="{{ site_url }}">
+        <input type="submit" value="Get Elements">
+    </form>
+
+    <table border="1" style="margin: 25px auto; padding: 20px;">
+        <tr>
+            <th>Ürün Başlığı</th>
+            <th>Satıldığı Yerler ve Fiyatları</th>
+        </tr>
+        {% for item in data_list %}
+            <tr>
+                <td>{{ item['title'] }}</td>
+                <td>{{ item['div_data'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Sayfadaki Filtre</h2>
+    <table border="1" style="margin: 25px auto; padding: 20px;">
+        {% for span_data in span1_data_list %}
+            <tr>
+                <td>{{ span_data }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
